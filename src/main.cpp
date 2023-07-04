@@ -5,8 +5,8 @@
 #include <PubSubClient.h>
 #include "devices.h"
 
-#define WIFI_SSID "Steff-IoT" // ganti dengan SSID masing-masing
-#define WIFI_PASSWORD "steffiot123" // ganti dengan password masing-masing
+#define WIFI_SSID "iot2.4g" // ganti dengan SSID masing-masing
+#define WIFI_PASSWORD "iot2.4g123" // ganti dengan password masing-masing
 
 #define MQTT_BROKER  "broker.emqx.io"
 
