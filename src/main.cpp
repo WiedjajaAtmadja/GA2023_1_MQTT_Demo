@@ -5,20 +5,20 @@
 #include <PubSubClient.h>
 #include "devices.h"
 
-#define WIFI_SSID "iot2.4g" // ganti dengan SSID masing-masing
-#define WIFI_PASSWORD "iot2.4g123" // ganti dengan password masing-masing
+#define WIFI_SSID "XXX" // ganti dengan SSID masing-masing
+#define WIFI_PASSWORD "XXX" // ganti dengan password masing-masing
 
 #define MQTT_BROKER  "broker.emqx.io"
 
-#define MQTT_TOPIC_PUBLISH_DEVICE_STATUS  "Binus_Syahdan/L1A/data/deviceStatus"
-#define MQTT_TOPIC_PUBLISH_TEMP           "Binus_Syahdan/L1A/data/Temperature"
-#define MQTT_TOPIC_PUBLISH_HUM            "Binus_Syahdan/L1A/data/Humidity"
-#define MQTT_TOPIC_PUBLISH_LIGHT          "Binus_Syahdan/L1A/data/Light"
-#define MQTT_TOPIC_PUBLISH_HELP_BUTTON    "Binus_Syahdan/L1A/data/HelpButton"
-#define MQTT_TOPIC_SUBSCRIBE              "Binus_Syahdan/L1A/cmd/#" 
+#define MQTT_TOPIC_PUBLISH_DEVICE_STATUS  "Binus_Malang/214/data/deviceStatus"
+#define MQTT_TOPIC_PUBLISH_TEMP           "Binus_Malang/214/data/Temperature"
+#define MQTT_TOPIC_PUBLISH_HUM            "Binus_Malang/214/data/Humidity"
+#define MQTT_TOPIC_PUBLISH_LIGHT          "Binus_Malang/214/data/Light"
+#define MQTT_TOPIC_PUBLISH_HELP_BUTTON    "Binus_Malang/214/data/HelpButton"
 
-#define MQTT_TOPIC_CMD_LED_RED            "Binus_Syahdan/L1A/cmd/LedRed" 
-#define MQTT_TOPIC_CMD_LED_GREEN          "Binus_Syahdan/L1A/cmd/LedGreen" 
+#define MQTT_TOPIC_SUBSCRIBE              "Binus_Malang/214/cmd/#" 
+#define MQTT_TOPIC_CMD_LED_RED            "Binus_Malang/214/cmd/LedRed" 
+#define MQTT_TOPIC_CMD_LED_GREEN          "Binus_Malang/214/cmd/LedGreen" 
 
 DHTesp dht;
 BH1750 lightMeter;
@@ -130,7 +130,7 @@ void loop() {
   nNow = millis();
   if (nNow - nTimerSendData>10000) // tiap 10 detik lakukan:
   {
-    digitalWrite(LED_BUILTIN, HIGH);
+    // digitalWrite(LED_BUILTIN, HIGH);
     nTimerSendData = nNow;
     Serial.println("Send Data to MQTT Broker");
 
@@ -142,7 +142,7 @@ void loop() {
     mqttPublish(MQTT_TOPIC_PUBLISH_TEMP, String(fTemperature).c_str());
     mqttPublish(MQTT_TOPIC_PUBLISH_HUM, String(fHumidity).c_str());
     mqttPublish(MQTT_TOPIC_PUBLISH_LIGHT, String(lux).c_str());        
-    digitalWrite(LED_BUILTIN, LOW);
+    // digitalWrite(LED_BUILTIN, LOW);
   }
 }
 
